@@ -40,9 +40,6 @@ public class Main {
             userInput = input.nextLine();
 
             switch (userInput) {
-                case "7":
-                    System.out.println("Existing Phone Book.");
-                    break;
                 case "1":
                     addUser();
                     break;
@@ -61,15 +58,25 @@ public class Main {
                 case "6":
                     deleteUser();
                     break;
+                case "7":
+                    System.out.println("Existing Phone Book.");
+                    break;
                 default:
                     break;
             }
 
-        } while (!userInput.equalsIgnoreCase("quit"));
+        } while (!userInput.equalsIgnoreCase("7"));
 
         return;
     }
 
+    public void addDefaultUsers() {
+        phoneBook.addUser(new User(UUID.randomUUID(), "Inga", 371234567, "i@i.lv"));
+        phoneBook.addUser(new User(UUID.randomUUID(), "Peteris", 371098765, "p@p.lv"));
+        phoneBook.addUser(new User(UUID.randomUUID(), "Normund", 372345678, "n@n.lv"));
+        phoneBook.addUser(new User(UUID.randomUUID(), "Irina", 371435465, "ir@ir.lv"));
+        phoneBook.addUser(new User(UUID.randomUUID(), "Alex", 371678767, "a@a.lv"));
+    }
     void addUser() {
 
         System.out.println("ADD NEW USER");
@@ -89,18 +96,10 @@ public class Main {
         user.id = UUID.randomUUID();
 
         String message = phoneBook.addUser(user);
-        System.out.println(message);
-        System.out.println();
+        System.out.println(message + "\n");
 
     }
 
-    public void addDefaultUsers() {
-        phoneBook.addUser(new User(UUID.randomUUID(), "Inga", 371234567, "i@i.lv"));
-        phoneBook.addUser(new User(UUID.randomUUID(), "Peteris", 371098765, "p@p.lv"));
-        phoneBook.addUser(new User(UUID.randomUUID(), "Normund", 372345678, "n@n.lv"));
-        phoneBook.addUser(new User(UUID.randomUUID(), "Irina", 371435465, "ir@ir.lv"));
-        phoneBook.addUser(new User(UUID.randomUUID(), "Alex", 371678767, "a@a.lv"));
-    }
     void viewAllUsers() {
         ArrayList<User> allUsers = phoneBook.getAllUsers();
 
@@ -119,11 +118,11 @@ public class Main {
         System.out.println("DELETE USER");
         System.out.print("Enter User ID: ");
 
-        int userId = input.nextInt();
+        int userId = Integer.parseInt(input.nextLine());
+
         String message;
         message = phoneBook.deleteUser(userId);
-        System.out.println(message);
-        System.out.println();
+        System.out.println(message + "\n");
 
         viewAllUsers();
     }
@@ -171,8 +170,7 @@ public class Main {
         user.email = input.nextLine();
 
         String response = phoneBook.updateUser(userId, user);
-        System.out.println(response);
-        System.out.println();
-    }
+        System.out.println(response + "\n");
 
+    }
 }
