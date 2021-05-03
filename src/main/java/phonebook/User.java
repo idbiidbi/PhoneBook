@@ -21,6 +21,7 @@ public class User {
     }
 
     public String getFullInfo() {
-        return name + "\t\t\t" + phoneNumber + "\t\t\t" + email;
+        return name + "\t\t\t" + phoneNumber + "\t\t\t" + email
+                ;
     }
 }

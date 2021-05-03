@@ -49,7 +49,7 @@ public class PhoneBook {
             User oldUser = this.users.get(userId);
             newUser.name = oldUser.name;
             oldUser.phoneNumber = newUser.phoneNumber;
-            oldUser.email = oldUser.email;
+            oldUser.email = newUser.email;
             return "Contact " + userId +  " update successfully";
 
         }
